@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import '../App.css';
 import { connect } from 'react-redux';
 import { getData } from "../actions/shared";
+import Login from "./Login";
 
 class App extends Component {
 
@@ -10,8 +12,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        Would you rather
+      <div className='container'>
+        <Login />
       </div>
     );
   }
