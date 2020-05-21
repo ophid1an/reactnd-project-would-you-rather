@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import LoadingBar from 'react-redux-loading';
 import { getData } from "../actions/shared";
 import Leaderboard from "./Leaderboard";
 import Navi from "./Navi";
@@ -24,21 +25,22 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Container>
-          <Navi />
-          {/*<Home />*/}
-          <Switch>
-            <Route path='/login' component={Login}/>
-            <PrivateRoute path='/add'>
-              <NewQuestion/>
-            </PrivateRoute>
-            <PrivateRoute path='/leaderboard'>
-              <Leaderboard/>
-            </PrivateRoute>
-            <PrivateRoute path='/'>
-              <Home/>
-            </PrivateRoute>
-          </Switch>
+        <Navi />
+        <LoadingBar />
+        <Container className='pt-4'>
+          <Leaderboard />
+          {/*<Switch>*/}
+          {/*  <Route path='/login' component={Login}/>*/}
+          {/*  <PrivateRoute path='/add'>*/}
+          {/*    <NewQuestion/>*/}
+          {/*  </PrivateRoute>*/}
+          {/*  <PrivateRoute path='/leaderboard'>*/}
+          {/*    <Leaderboard/>*/}
+          {/*  </PrivateRoute>*/}
+          {/*  <PrivateRoute path='/'>*/}
+          {/*    <Home/>*/}
+          {/*  </PrivateRoute>*/}
+          {/*</Switch>*/}
         </Container>
       </Router>
     );

@@ -15,7 +15,7 @@ function Navi({ dispatch, username }) {
   }
 
   return (
-    <Navbar bg="light" variant="light" className='mb-4'>
+    <Navbar bg="light" variant="light">
       <Navbar.Brand>Would you rather</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className='justify-content-between'>
