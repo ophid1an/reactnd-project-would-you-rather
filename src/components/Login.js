@@ -1,57 +1,51 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
+import {
+  useHistory,
+  useLocation
+} from "react-router-dom";
 import {loginUser} from "../actions/authedUser";
 
-class Login extends Component {
-  state = {
-    userId: null,
-  }
+function Login({ dispatch, users }) {
+  const [userId, setUserId] = useState(null);
+  const history = useHistory();
+  const location = useLocation();
 
-  onSelect = e => {
+  const onSubmit = e => {
     e.preventDefault();
-    const userId = e.target.value;
+    const { from } = location.state || { from:{ pathname: "/" } };
 
-    this.setState({userId});
+    dispatch(loginUser(userId));
+    history.replace(from);
   }
 
-  onSubmit = e => {
-    e.preventDefault();
-
-    this.props.dispatch(loginUser(this.state.userId));
-    // todo: redirect
-  }
-
-  render() {
-    const { users } = this.props;
-    return (
-      <div className='login-container text-center'>
-        <h2>Would you rather</h2>
-        <form
-          className="form-signin"
-          onSubmit={this.onSubmit}
-        >
-          <h6>Please sign in to continue</h6>
-          <div className="form-group">
-            <select
-              className="form-control form-control-lg"
-              onChange={this.onSelect}
-              defaultValue=''
-            >
-              <option value='' disabled={true}>Select User</option>
-              {Object.keys(users).map(id => (
-                <option key={id} value={id}>{users[id].name}</option>
-              ))}
-            </select>
-          </div>
-          <button
-            className="btn btn-lg btn-primary btn-block"
-            type="submit"
-            disabled={!this.state.userId}
-          >Sign in</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className='login-container'>
+      <form
+        className="form-signin"
+        onSubmit={onSubmit}
+      >
+        <h6>Please sign in to continue</h6>
+        <div className="form-group">
+          <select
+            className="form-control form-control-lg"
+            onChange={e => setUserId(e.target.value)}
+            defaultValue=''
+          >
+            <option value='' disabled={true}>Select User</option>
+            {Object.keys(users).map(id => (
+              <option key={id} value={id}>{users[id].name}</option>
+            ))}
+          </select>
+        </div>
+        <button
+          className="btn btn-lg btn-primary btn-block"
+          type="submit"
+          disabled={!userId}
+        >Sign in</button>
+      </form>
+    </div>
+  );
 }
 
 const mapStateToProps = ({ users }) => ({
