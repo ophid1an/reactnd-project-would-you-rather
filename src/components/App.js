@@ -26,6 +26,7 @@ class App extends Component {
       <Router>
         <Container>
           <Navi />
+          {/*<Home />*/}
           <Switch>
             <Route path='/login' component={Login}/>
             <PrivateRoute path='/add'>

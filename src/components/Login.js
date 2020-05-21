@@ -17,15 +17,14 @@ function Login({ dispatch, users }) {
 
     dispatch(loginUser(userId));
     history.replace(from);
-  }
+  };
 
   return (
-    <div className='login-container'>
       <form
-        className="form-signin"
+        className="mx-auto w-50"
         onSubmit={onSubmit}
       >
-        <h6>Please sign in to continue</h6>
+        <h6 className='text-muted text-center'>Please sign in to continue</h6>
         <div className="form-group">
           <select
             className="form-control form-control-lg"
@@ -44,7 +43,6 @@ function Login({ dispatch, users }) {
           disabled={!userId}
         >Sign in</button>
       </form>
-    </div>
   );
 }
 
