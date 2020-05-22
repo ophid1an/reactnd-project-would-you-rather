@@ -15,10 +15,11 @@ function Navi({ dispatch, username }) {
   }
 
   return (
-    <Navbar bg="light" variant="light">
-      <Navbar.Brand>Would you rather</Navbar.Brand>
+    <Navbar bg="info" variant="light" expand='md'>
+      {username &&
+      <Navbar.Brand>{`Hello, ${username}`}</Navbar.Brand>}
       <Navbar.Toggle />
-      <Navbar.Collapse className='justify-content-between'>
+      <Navbar.Collapse className='justify-content-around'>
         <Nav>
           <LinkContainer to='/'>
             <Nav.Link>Home</Nav.Link>
@@ -31,13 +32,9 @@ function Navi({ dispatch, username }) {
           </LinkContainer>
         </Nav>
         { username &&
-        <Nav className='justify-content-end'>
-          <Navbar.Text>
-            {`Hello, ${username}`}
-          </Navbar.Text>
+        <Nav>
           <Nav.Link onClick={onLogout}>Logout</Nav.Link>
-        </Nav>
-        }
+        </Nav>}
       </Navbar.Collapse>
     </Navbar>
   );

@@ -17,7 +17,6 @@ function Home({ questions, questionIds, users, authedUser }) {
     <Tabs
       defaultActiveKey="unanswered"
       className='w-75 mx-auto mb-3 justify-content-center'
-      transition={false}
     >
       <Tab eventKey="unanswered" title="Unanswered Questions">
         {questionIds

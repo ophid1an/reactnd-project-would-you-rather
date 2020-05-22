@@ -5,6 +5,8 @@ import {
   useLocation
 } from "react-router-dom";
 import {loginUser} from "../actions/authedUser";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function Login({ dispatch, users }) {
   const [userId, setUserId] = useState(null);
@@ -20,14 +22,15 @@ function Login({ dispatch, users }) {
   };
 
   return (
-      <form
+    <React.Fragment>
+      <h3 className='mb-4 text-center'>Would you rather app</h3>
+      <Form
         className="mx-auto w-50"
         onSubmit={onSubmit}
       >
         <h6 className='text-muted text-center'>Please sign in to continue</h6>
-        <div className="form-group">
-          <select
-            className="form-control form-control-lg"
+        <Form.Group>
+          <Form.Control as='select'
             onChange={e => setUserId(e.target.value)}
             defaultValue=''
           >
@@ -35,14 +38,15 @@ function Login({ dispatch, users }) {
             {Object.keys(users).map(id => (
               <option key={id} value={id}>{users[id].name}</option>
             ))}
-          </select>
-        </div>
-        <button
-          className="btn btn-lg btn-primary btn-block"
-          type="submit"
+          </Form.Control>
+        </Form.Group>
+        <Button
+          type='submit'
+          block
           disabled={!userId}
-        >Sign in</button>
-      </form>
+        >Sign in</Button>
+      </Form>
+    </React.Fragment>
   );
 }
 

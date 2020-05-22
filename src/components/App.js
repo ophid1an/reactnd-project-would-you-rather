@@ -28,19 +28,19 @@ class App extends Component {
         <Navi />
         <LoadingBar />
         <Container className='pt-4'>
-          <Leaderboard />
-          {/*<Switch>*/}
-          {/*  <Route path='/login' component={Login}/>*/}
-          {/*  <PrivateRoute path='/add'>*/}
-          {/*    <NewQuestion/>*/}
-          {/*  </PrivateRoute>*/}
-          {/*  <PrivateRoute path='/leaderboard'>*/}
-          {/*    <Leaderboard/>*/}
-          {/*  </PrivateRoute>*/}
-          {/*  <PrivateRoute path='/'>*/}
-          {/*    <Home/>*/}
-          {/*  </PrivateRoute>*/}
-          {/*</Switch>*/}
+          {/*<Leaderboard />*/}
+            <Switch>
+              <Route path='/login' component={Login}/>
+              <PrivateRoute path='/add'>
+                <NewQuestion/>
+              </PrivateRoute>
+              <PrivateRoute path='/leaderboard'>
+                <Leaderboard/>
+              </PrivateRoute>
+              <PrivateRoute path='/'>
+                <Home/>
+              </PrivateRoute>
+            </Switch>
         </Container>
       </Router>
     );
