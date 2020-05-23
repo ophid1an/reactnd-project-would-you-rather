@@ -1,13 +1,10 @@
 import { getInitialData, saveQuestion, saveQuestionAnswer } from "../utils/api";
 import {getUsers} from "./users";
 import {getQuestions} from "./questions";
-import {loginUser} from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
-
-const TEST_USER_ID = 'johndoe';
 
 function addQuestion(question) {
   return {
