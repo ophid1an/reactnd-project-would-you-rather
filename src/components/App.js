@@ -37,7 +37,7 @@ class App extends Component {
               <PrivateRoute path='/leaderboard'>
                 <Leaderboard/>
               </PrivateRoute>
-              <PrivateRoute path='/question/:id'>
+              <PrivateRoute path='/questions/:id'>
                 <QuestionDetails/>
               </PrivateRoute>
               <PrivateRoute path='/'>

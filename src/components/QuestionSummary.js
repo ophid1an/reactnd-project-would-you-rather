@@ -14,7 +14,7 @@ function QuestionSummary({ question, author, ...props }) {
         <p className='text-truncate'>
           {`${question.optionOne.text}...`}
         </p>
-        <LinkContainer to={`/question/${question.id}`}>
+        <LinkContainer to={`/questions/${question.id}`}>
           <Button variant="outline-primary" type="submit" block>
             View Poll
           </Button>

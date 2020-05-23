@@ -54,7 +54,6 @@ export function getData() {
       .then(({ users, questions }) => {
         dispatch(getUsers(users));
         dispatch(getQuestions(questions));
-        // dispatch(loginUser(USER_ID));
       })
       .then(() => dispatch(hideLoading()))
       .catch(e => console.warn('Error while getting initial data: ', e));
