@@ -15,6 +15,7 @@ import Home from "./Home";
 import NewQuestion from "./NewQuestion";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
+import QuestionDetails from "./QuestionDetails";
 
 class App extends Component {
 
@@ -28,7 +29,6 @@ class App extends Component {
         <Navi />
         <LoadingBar />
         <Container className='pt-4'>
-          {/*<Leaderboard />*/}
             <Switch>
               <Route path='/login' component={Login}/>
               <PrivateRoute path='/add'>
@@ -36,6 +36,9 @@ class App extends Component {
               </PrivateRoute>
               <PrivateRoute path='/leaderboard'>
                 <Leaderboard/>
+              </PrivateRoute>
+              <PrivateRoute path='/question/:id'>
+                <QuestionDetails/>
               </PrivateRoute>
               <PrivateRoute path='/'>
                 <Home/>

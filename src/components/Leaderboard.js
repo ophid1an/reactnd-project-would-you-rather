@@ -1,14 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import LeaderboardItem from "./LeaderboardItem";
 
 function Leaderboard({ users, counts }) {
-  console.log(counts)
   return (
-    <ul>
+    <ol className='list-unstyled'>
       {counts.map(c => (
-        <li key={c.id}>{`${users[c.id].name} - ${c.createdCnt} / ${c.answeredCnt} / ${c.totalCnt} `}</li>
+        <LeaderboardItem
+          key={c.id}
+          user={users[c.id]}
+          counts={c}
+          as='li' className='w-75 mx-auto mb-2 border p-3'
+        />
       ))}
-    </ul>
+    </ol>
   );
 }
 

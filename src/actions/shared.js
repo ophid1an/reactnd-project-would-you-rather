@@ -1,17 +1,27 @@
-import { getInitialData, saveQuestion } from "../utils/api";
+import { getInitialData, saveQuestion, saveQuestionAnswer } from "../utils/api";
 import {getUsers} from "./users";
 import {getQuestions} from "./questions";
 import {loginUser} from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const ADD_QUESTION = 'ADD_QUESTION';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
 
-const USER_ID = 'johndoe';
+const TEST_USER_ID = 'johndoe';
 
 function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
+  };
+}
+
+function addQuestionAnswer({authedUser, qid, answer}) {
+  return {
+    type: ADD_QUESTION_ANSWER,
+    authedUser,
+    qid,
+    answer,
   };
 }
 
@@ -27,15 +37,27 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
   }
 }
 
+export function handleAddQuestionAnswer(qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    dispatch(showLoading());
+
+    return saveQuestionAnswer({authedUser, qid, answer})
+      .then(() => dispatch(addQuestionAnswer({authedUser, qid, answer})))
+      .then(() => dispatch(hideLoading()));
+  }
+}
+
 export function getData() {
   return dispatch => {
     dispatch(showLoading());
-    dispatch(loginUser(USER_ID));
 
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(getUsers(users));
         dispatch(getQuestions(questions));
+        // dispatch(loginUser(USER_ID));
       })
       .then(() => dispatch(hideLoading()))
       .catch(e => console.warn('Error while getting initial data: ', e));
