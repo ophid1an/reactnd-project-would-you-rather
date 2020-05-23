@@ -19,7 +19,7 @@ function QuestionDetailsUnanswered({ dispatch, authorName, question }) {
   return (
     <React.Fragment>
       <h5 className='border-bottom mb-3'>{`${authorName} asks:`}</h5>
-      <p className='font-weight-bold'>Would you rather...</p>
+      <p className='font-weight-bold'>Would You Rather ...</p>
       <Form onSubmit={!submitting ? handleSubmit : null}>
         <fieldset>
           <Form.Group>
